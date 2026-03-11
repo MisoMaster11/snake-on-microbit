@@ -97,6 +97,8 @@ def on_every_interval():
         return
     
     snake.append((new_head_x, new_head_y))
+    if len(snake)>=25:
+        game_over(IconNames.DIAMOND)
     if new_head_x == apple[0] and new_head_y == apple[1]:
         spawn_apple()
     else:
@@ -109,10 +111,5 @@ def on_every_interval():
             return
 
     led.plot_brightness(new_head_x, new_head_y, snake_brightness)
-    can_turn = True
-
-    if len(snake)>=25:
-        game_over(IconNames.DIAMOND)
-
-    
+    can_turn = True    
 loops.every_interval(500, on_every_interval)

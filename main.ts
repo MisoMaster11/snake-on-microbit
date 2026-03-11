@@ -113,6 +113,10 @@ loops.everyInterval(500, function on_every_interval() {
     }
     
     snake.push([new_head_x, new_head_y])
+    if (snake.length >= 25) {
+        game_over(IconNames.Diamond)
+    }
+    
     if (new_head_x == apple[0] && new_head_y == apple[1]) {
         spawn_apple()
     } else {
@@ -129,8 +133,4 @@ loops.everyInterval(500, function on_every_interval() {
     }
     led.plotBrightness(new_head_x, new_head_y, snake_brightness)
     can_turn = true
-    if (snake.length >= 25) {
-        game_over(IconNames.Diamond)
-    }
-    
 })
